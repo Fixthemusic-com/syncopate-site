@@ -1,0 +1,114 @@
+---
+title: "Commands"
+description: "Register and handle bot commands with the Syncopate SDK."
+sidebar:
+  order: 3
+---
+
+Commands are a structured way for users to interact with your bot. Instead of parsing `on_message` manually, you register named commands that the SDK matches and dispatches automatically.
+
+## Registering Commands
+
+### Python
+
+```python
+@bot.command()
+async def ping(ctx: syncopate.Context) -> None:
+    await ctx.reply("Pong!")
+```
+
+When a user types `!ping`, the bot calls your `ping` handler with a `Context` object.
+
+### TypeScript
+
+```typescript
+class MyBot extends Bot {
+  @Command('ping')
+  async ping(ctx: Context) {
+    await ctx.reply('Pong!');
+  }
+}
+```
+
+## Command Arguments
+
+Arguments are automatically parsed from the message text:
+
+### Python
+
+```python
+@bot.command()
+async def greet(ctx: syncopate.Context, name: str = "world") -> None:
+    await ctx.send(f"Hello, {name}!")
+```
+
+- `!greet` → "Hello, world!"
+- `!greet Alice` → "Hello, Alice!"
+
+### TypeScript
+
+Arguments are available through `ctx.args`:
+
+```typescript
+@Command('greet')
+async greet(ctx: Context) {
+  const name = ctx.args[0] ?? 'world';
+  await ctx.send(`Hello, ${name}!`);
+}
+```
+
+## Custom Command Names
+
+By default, the command name matches the function name. Override it with the `name` parameter:
+
+### Python
+
+```python
+@bot.command(name="hi", description="Say hello")
+async def greet_handler(ctx: syncopate.Context) -> None:
+    await ctx.reply("Hello!")
+```
+
+### TypeScript
+
+```typescript
+@Command('hi')
+async greetHandler(ctx: Context) {
+  await ctx.reply('Hello!');
+}
+```
+
+## The Context Object
+
+Every command handler receives a `Context` with these properties:
+
+| Property | Type | Description |
+|---|---|---|
+| `message` | `Message` | The original message that triggered the command |
+| `channel` | `Channel` | The channel it was sent in |
+| `author` | `User` | The user who sent the command |
+| `command` | `str` / `string` | The command name that was matched |
+| `args` | `list[str]` / `string[]` | Parsed arguments after the command name |
+
+### Context Methods
+
+| Method | Description |
+|---|---|
+| `ctx.reply(content)` | Reply to the command message |
+| `ctx.send(content)` | Send a message to the same channel |
+
+## Command Prefix
+
+The default prefix is `!`. Change it in the bot constructor:
+
+### Python
+
+```python
+bot = syncopate.Bot(token="...", command_prefix="/")
+```
+
+### TypeScript
+
+```typescript
+const bot = new MyBot({ token: '...', commandPrefix: '/' });
+```

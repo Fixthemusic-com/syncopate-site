@@ -1,0 +1,29 @@
+/* Syncopate brand theming for Starlight */
+
+:root {
+	/* Accent colours — cyan from Syncopate brand */
+	--sl-color-accent-low: #072a33;
+	--sl-color-accent: #00e5ff;
+	--sl-color-accent-high: #b3f5ff;
+
+	/* Background surfaces — dark theme matching marketing site */
+	--sl-color-bg: #0a0a1a;
+	--sl-color-bg-nav: #0d0d24;
+	--sl-color-bg-sidebar: #0d0d24;
+
+	/* Text */
+	--sl-color-text: #e0e0e8;
+	--sl-color-text-accent: #00e5ff;
+
+	/* Borders */
+	--sl-color-hairline-light: rgba(255, 255, 255, 0.06);
+	--sl-color-hairline: rgba(255, 255, 255, 0.1);
+
+	/* Font */
+	--sl-font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Hero page styling */
+.hero {
+	border-bottom: 1px solid var(--sl-color-hairline);
+}

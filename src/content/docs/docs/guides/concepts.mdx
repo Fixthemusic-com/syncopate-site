@@ -1,0 +1,55 @@
+---
+title: "Concepts"
+description: "Core architecture concepts of the Syncopate Bot SDK."
+sidebar:
+  order: 1
+---
+
+Understanding the architecture will help you build better bots. Here's how the pieces fit together.
+
+## Layers
+
+The SDK has four layers, from high-level to low-level:
+
+| Layer | What it does |
+|---|---|
+| **Bot** | Developer-facing API with `@event` and `@command()` decorators |
+| **Commands** | Command parsing, argument extraction, `Context` object |
+| **REST Client** | HTTP requests to the Syncopate API (send messages, manage channels) |
+| **SSE Gateway** | Real-time event stream via Server-Sent Events |
+
+You'll mostly interact with the Bot layer. The other layers work behind the scenes.
+
+## Connection Lifecycle
+
+```
+1. bot.run() called
+2. REST: POST /api/auth/login (bot token → session)
+3. REST: GET /api/workspaces (discover workspace + channels)
+4. SSE: Connect to /api/events/stream
+5. SSE: Receive events → dispatch to handlers
+6. (Loop until disconnected or stopped)
+```
+
+## Event Flow
+
+When a message arrives:
+
+1. The **SSE Gateway** receives a `message.created` event
+2. The **Bot** builds a `Message` model from the payload
+3. It resolves the `Channel` and `User` references
+4. It dispatches to your `on_message` / `messageCreate` handler
+5. If the message starts with the command prefix, it also dispatches to the matching command handler
+
+## Authentication
+
+Bots authenticate with a **bot token** (prefixed `bot_`). The SDK exchanges this token for a session on startup. You never need to manage sessions manually.
+
+## Channel Visibility
+
+Bots can only see channels in their workspace. When the bot connects, it fetches the channel list and caches it. New channels are added to the cache via `channel.created` events.
+
+## Next Steps
+
+- [Events](/docs/guides/events) — every event your bot can listen to
+- [Commands](/docs/guides/commands) — registering and handling commands

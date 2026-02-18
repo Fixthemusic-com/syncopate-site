@@ -1,0 +1,47 @@
+---
+title: "Overview"
+description: "Introduction to the Syncopate Bot SDK — what it is, what you can build, and how to get started."
+sidebar:
+  order: 1
+---
+
+The Syncopate Bot SDK lets you build programmable bots that live inside Syncopate workspaces. Bots can listen to messages, respond to commands, manage channels, and automate workflows — all through a familiar, decorator-based API.
+
+## What Can Bots Do?
+
+- **Respond to messages** — react to keywords, patterns, or mentions
+- **Register commands** — define `!ping`, `!help`, `!deploy` or any custom command
+- **Manage channels** — create, update, and archive channels programmatically
+- **Look up users** — fetch user profiles, check roles, send DMs
+- **Automate workflows** — connect to external APIs, trigger actions on events
+- **Real-time events** — receive typing indicators, member joins/leaves, channel updates via SSE
+
+## Choose Your Language
+
+| | Python | TypeScript |
+|---|---|---|
+| **Package** | `syncopate` | `@syncopate/sdk` |
+| **Style** | Functional decorators (`@bot.event`) | Class decorators (`@OnEvent`) |
+| **Runtime** | Python 3.11+ | Node.js 18+ |
+| **Gateway** | `aiohttp` SSE | `eventsource` SSE |
+
+Both SDKs share the same architecture and feature set. Choose whichever fits your stack.
+
+## Architecture
+
+```
+┌─────────────────────────────────────┐
+│           Bot / Client              │  ← Developer-facing API
+├─────────────────────────────────────┤
+│  Decorators / Commands / Context    │  ← @event, @command()
+├───────────────────┬─────────────────┤
+│    REST Client    │   SSE Gateway   │  ← HTTP + real-time events
+├───────────────────┴─────────────────┤
+│              Models                 │  ← User, Channel, Message, etc.
+└─────────────────────────────────────┘
+```
+
+## Next Steps
+
+- [Installation](/docs/getting-started/installation) — install the SDK
+- [Your First Bot](/docs/getting-started/first-bot) — build an echo bot in 5 minutes

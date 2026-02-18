@@ -20,8 +20,8 @@ export const FOOTER_LINKS = {
     { label: 'Blog', href: '/blog' },
   ],
   resources: [
-    { label: 'Documentation', href: '#' },
-    { label: 'API Reference', href: '#' },
-    { label: 'Bot SDK', href: '#' },
+    { label: 'Documentation', href: '/docs' },
+    { label: 'API Reference', href: '/docs/api-python/bot' },
+    { label: 'Bot SDK', href: '/docs/getting-started/overview' },
   ],
 } as const;

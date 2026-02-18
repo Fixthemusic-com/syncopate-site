@@ -1,0 +1,91 @@
+---
+title: Syncopate Bot SDK
+description: Build bots for Syncopate in Python or TypeScript with a decorator-based API.
+template: splash
+hero:
+  tagline: Build programmable bots that live inside Syncopate workspaces — listen to messages, handle commands, manage channels, and automate workflows.
+  actions:
+    - text: Get Started
+      link: /docs/getting-started/overview/
+      icon: right-arrow
+    - text: API Reference
+      link: /docs/api-python/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="Getting Started" icon="rocket">
+    Install the SDK, create your first bot, and connect to your workspace.
+    [Overview →](/docs/getting-started/overview/)
+  </Card>
+
+  <Card title="Events" icon="star">
+    Handle messages, channel updates, member joins, typing indicators, and more.
+    [Events Reference →](/docs/guides/events/)
+  </Card>
+
+  <Card title="Commands" icon="setting">
+    Register commands with decorators, parse arguments, and reply to users.
+    [Commands Guide →](/docs/guides/commands/)
+  </Card>
+
+  <Card title="Models" icon="document">
+    User, Channel, Message, Workspace — the data structures your bot works with.
+    [Models Reference →](/docs/guides/models/)
+  </Card>
+</CardGrid>
+
+## Quick Example
+
+### Python
+
+```python
+import syncopate
+
+bot = syncopate.Bot(token="bot_xxxx")
+
+@bot.event
+async def on_ready() -> None:
+    print(f"Logged in as {bot.user.display_name}")
+
+@bot.event
+async def on_message(message: syncopate.Message) -> None:
+    if message.author and message.author.bot:
+        return
+    await message.channel.send(f"Echo: {message.content}")
+
+@bot.command()
+async def ping(ctx: syncopate.Context) -> None:
+    await ctx.reply("Pong!")
+
+bot.run()
+```
+
+### TypeScript
+
+```typescript
+import { Bot, OnEvent, Command, Message, Context } from '@syncopate/sdk';
+
+class MyBot extends Bot {
+  @OnEvent('ready')
+  async onReady() {
+    console.log(`Logged in as ${this.user.displayName}`);
+  }
+
+  @OnEvent('messageCreate')
+  async onMessage(message: Message) {
+    if (message.author?.bot) return;
+    await message.channel?.send(`Echo: ${message.content}`);
+  }
+
+  @Command('ping')
+  async ping(ctx: Context) {
+    await ctx.reply('Pong!');
+  }
+}
+
+const bot = new MyBot({ token: 'bot_xxxx' });
+bot.run();
+```

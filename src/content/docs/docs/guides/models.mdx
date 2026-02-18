@@ -1,0 +1,86 @@
+---
+title: "Models"
+description: "Data models used throughout the Syncopate Bot SDK."
+sidebar:
+  order: 4
+---
+
+Models represent the core data structures in Syncopate. They're returned from API calls and passed to event handlers.
+
+## User
+
+Represents a Syncopate user (human or bot).
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `str` / `string` | UUID |
+| `email` | `str` / `string` | Email address |
+| `display_name` / `displayName` | `str` / `string` | Display name |
+| `bot` | `bool` / `boolean` | Whether this user is a bot |
+
+## Workspace
+
+Represents a workspace (organization) in Syncopate.
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `str` / `string` | UUID |
+| `name` | `str` / `string` | Workspace name |
+| `slug` | `str` / `string` | URL slug |
+
+## Channel
+
+Represents a channel within a workspace.
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `str` / `string` | UUID |
+| `name` | `str` / `string` | Channel name |
+| `workspace_id` / `workspaceId` | `str` / `string` | Parent workspace UUID |
+| `type` | `str` / `string` | Channel type (`"public"`, `"private"`, `"dm"`) |
+
+### Channel Methods
+
+```python
+# Python
+await channel.send("Hello!")
+messages = await channel.history(limit=10)
+```
+
+```typescript
+// TypeScript
+await channel.send('Hello!');
+const messages = await channel.history({ limit: 10 });
+```
+
+## Message
+
+Represents a message in a channel.
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `str` / `string` | UUID |
+| `content` | `str` / `string` | Text content |
+| `channel_id` / `channelId` | `str` / `string` | Channel UUID |
+| `user_id` / `userId` | `str` / `string` | Sender UUID |
+| `channel` | `Channel` | Resolved channel (may be None/undefined) |
+| `author` | `User` | Resolved user (may be None/undefined) |
+
+## WorkspaceMember
+
+Represents a user's membership in a workspace.
+
+| Field | Type | Description |
+|---|---|---|
+| `user_id` / `userId` | `str` / `string` | User UUID |
+| `workspace_id` / `workspaceId` | `str` / `string` | Workspace UUID |
+| `role` | `str` / `string` | Role in the workspace |
+
+## ChannelMember
+
+Represents a user's membership in a channel.
+
+| Field | Type | Description |
+|---|---|---|
+| `user_id` / `userId` | `str` / `string` | User UUID |
+| `channel_id` / `channelId` | `str` / `string` | Channel UUID |

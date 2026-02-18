@@ -1,0 +1,97 @@
+---
+title: "Your First Bot"
+description: "Build an echo bot in 5 minutes with the Syncopate Bot SDK."
+sidebar:
+  order: 3
+---
+
+This tutorial walks you through creating a simple bot that echoes messages and responds to a `!ping` command.
+
+## Python
+
+Create a file called `echo_bot.py`:
+
+```python
+import os
+import syncopate
+
+bot = syncopate.Bot(
+    token=os.environ["BOT_TOKEN"],
+    command_prefix="!",
+)
+
+@bot.event
+async def on_ready() -> None:
+    print(f"✅ Bot is online as {bot.user.display_name}")
+
+@bot.event
+async def on_message(message: syncopate.Message) -> None:
+    # Ignore messages from bots (including ourselves)
+    if message.author and message.author.bot:
+        return
+    await message.channel.send(f"Echo: {message.content}")
+
+@bot.command()
+async def ping(ctx: syncopate.Context) -> None:
+    """Responds with Pong!"""
+    await ctx.reply("Pong! 🏓")
+
+bot.run()
+```
+
+Run it:
+
+```bash
+BOT_TOKEN=bot_xxxx python echo_bot.py
+```
+
+## TypeScript
+
+Create a file called `echo-bot.ts`:
+
+```typescript
+import { Bot, OnEvent, Command, Message, Context } from '@syncopate/sdk';
+
+class EchoBot extends Bot {
+  @OnEvent('ready')
+  async onReady() {
+    console.log(`✅ Bot is online as ${this.user.displayName}`);
+  }
+
+  @OnEvent('messageCreate')
+  async onMessage(message: Message) {
+    // Ignore messages from bots (including ourselves)
+    if (message.author?.bot) return;
+    await message.channel?.send(`Echo: ${message.content}`);
+  }
+
+  @Command('ping')
+  async ping(ctx: Context) {
+    await ctx.reply('Pong! 🏓');
+  }
+}
+
+const bot = new EchoBot({ token: process.env.BOT_TOKEN! });
+bot.run();
+```
+
+Run it:
+
+```bash
+BOT_TOKEN=bot_xxxx npx tsx echo-bot.ts
+```
+
+## What's Happening
+
+1. **`Bot(token=...)`** — creates a client instance authenticated with your bot token
+2. **`@bot.event` / `@OnEvent`** — registers event handlers. The framework calls these when events arrive via SSE
+3. **`on_ready` / `ready`** — fires once when the bot connects to the gateway
+4. **`on_message` / `messageCreate`** — fires on every new message in channels the bot can see
+5. **`@bot.command()` / `@Command`** — registers a command handler. When someone types `!ping`, the framework parses it and calls your handler with a `Context` object
+6. **`bot.run()`** — connects to the SSE gateway and starts listening (blocking call)
+
+## Next Steps
+
+- [Events Reference](/docs/guides/events) — all available events
+- [Commands Guide](/docs/guides/commands) — arguments, aliases, and more
+- [Error Handling](/docs/guides/error-handling) — graceful failure patterns

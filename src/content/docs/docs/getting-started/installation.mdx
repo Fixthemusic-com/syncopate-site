@@ -1,0 +1,70 @@
+---
+title: "Installation"
+description: "Install the Syncopate Bot SDK for Python or TypeScript."
+sidebar:
+  order: 2
+---
+
+## Python
+
+**Requirements:** Python 3.11 or higher.
+
+```bash
+pip install syncopate
+```
+
+For development (includes test and type-checking tools):
+
+```bash
+pip install syncopate[dev]
+```
+
+### From Source
+
+```bash
+git clone https://github.com/Fixthemusic-com/syncopate.git
+cd syncopate/sdk/python
+pip install -e ".[dev]"
+```
+
+## TypeScript
+
+**Requirements:** Node.js 18 or higher.
+
+```bash
+npm install @syncopate/sdk
+```
+
+Or with yarn/pnpm:
+
+```bash
+yarn add @syncopate/sdk
+pnpm add @syncopate/sdk
+```
+
+### From Source
+
+```bash
+git clone https://github.com/Fixthemusic-com/syncopate.git
+cd syncopate/sdk/typescript
+npm install
+npm run build
+```
+
+## Bot Token
+
+Every bot needs a token to authenticate. You can create one from your workspace settings:
+
+1. Go to **Workspace Settings → Integrations → Bots**
+2. Click **Create Bot**
+3. Copy the token (starts with `bot_`)
+4. Store it securely — never commit tokens to source control
+
+```bash
+# Set as environment variable
+export BOT_TOKEN=bot_xxxx
+```
+
+## Next Steps
+
+- [Your First Bot](/docs/getting-started/first-bot) — build an echo bot

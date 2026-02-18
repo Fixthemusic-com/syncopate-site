@@ -1,0 +1,81 @@
+---
+title: "Error Handling"
+description: "Handle API errors, gateway disconnects, and edge cases gracefully."
+sidebar:
+  order: 5
+---
+
+The SDK defines a hierarchy of error types to help you handle failures gracefully.
+
+## Error Types
+
+| Error | When it's raised |
+|---|---|
+| `SyncopateError` | Base class for all SDK errors |
+| `HTTPError` | REST API returned a non-2xx status |
+| `GatewayError` | SSE connection failed or was interrupted |
+
+## Catching Errors
+
+### Python
+
+```python
+from syncopate import SyncopateError, HTTPError, GatewayError
+
+@bot.event
+async def on_message(message: syncopate.Message) -> None:
+    try:
+        await message.channel.send("Hello!")
+    except HTTPError as e:
+        print(f"API error {e.status}: {e.message}")
+    except SyncopateError as e:
+        print(f"SDK error: {e}")
+```
+
+### TypeScript
+
+```typescript
+import { SyncopateError, HTTPError, GatewayError } from '@syncopate/sdk';
+
+@OnEvent('messageCreate')
+async onMessage(message: Message) {
+  try {
+    await message.channel?.send('Hello!');
+  } catch (e) {
+    if (e instanceof HTTPError) {
+      console.error(`API error ${e.status}: ${e.message}`);
+    } else if (e instanceof SyncopateError) {
+      console.error(`SDK error: ${e.message}`);
+    }
+  }
+}
+```
+
+## Event Handler Errors
+
+The SDK catches exceptions in event handlers and logs them without crashing the bot. You'll see error logs like:
+
+```
+ERROR syncopate.bot: Error in 'message' handler
+Traceback (most recent call last):
+  ...
+```
+
+To add custom error handling, wrap your handler logic in try/except.
+
+## Gateway Reconnection
+
+If the SSE connection drops, the SDK will:
+
+1. Log the disconnection
+2. Wait briefly before reconnecting
+3. Resume event delivery
+
+You don't need to handle reconnection manually.
+
+## Best Practices
+
+- **Never swallow errors silently** — log them at minimum
+- **Use specific exception types** — catch `HTTPError` for API failures, `GatewayError` for connection issues
+- **Keep handlers idempotent** — SSE may re-deliver events after a reconnection
+- **Set timeouts** on external API calls to avoid blocking the event loop

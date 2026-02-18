@@ -1,0 +1,90 @@
+---
+title: "Events"
+description: "Complete reference for all events the Syncopate Bot SDK can handle."
+sidebar:
+  order: 2
+---
+
+Events are the core of a Syncopate bot. They're delivered in real-time via SSE (Server-Sent Events) and dispatched to your handlers automatically.
+
+## Event Reference
+
+| Python Handler | TypeScript Decorator | SSE Event Type | Payload |
+|---|---|---|---|
+| `on_ready` | `@OnEvent('ready')` | — | — |
+| `on_message` | `@OnEvent('messageCreate')` | `message.created` | `Message` |
+| `on_message_update` | `@OnEvent('messageUpdate')` | `message.updated` | `Message` |
+| `on_message_delete` | `@OnEvent('messageDelete')` | `message.deleted` | `{ message_id }` |
+| `on_channel_create` | `@OnEvent('channelCreate')` | `channel.created` | Channel data |
+| `on_channel_update` | `@OnEvent('channelUpdate')` | `channel.updated` | Changed fields |
+| `on_channel_delete` | `@OnEvent('channelDelete')` | `channel.deleted` | `{ channel_id }` |
+| `on_member_join` | `@OnEvent('memberJoin')` | `member.joined` | `{ user_id }` |
+| `on_member_leave` | `@OnEvent('memberLeave')` | `member.left` | `{ user_id }` |
+| `on_typing` | `@OnEvent('typingStart')` | `typing.start` | `{ user_id }` |
+
+## Registering Event Handlers
+
+### Python
+
+Use the `@bot.event` decorator. The function name determines the event (with `on_` prefix):
+
+```python
+@bot.event
+async def on_message(message: syncopate.Message) -> None:
+    print(f"New message from {message.author.display_name}: {message.content}")
+
+@bot.event
+async def on_member_join(data: dict) -> None:
+    print(f"User {data['user_id']} joined the workspace")
+```
+
+### TypeScript
+
+Use the `@OnEvent()` decorator on class methods:
+
+```typescript
+class MyBot extends Bot {
+  @OnEvent('messageCreate')
+  async onMessage(message: Message) {
+    console.log(`New message from ${message.author.displayName}: ${message.content}`);
+  }
+
+  @OnEvent('memberJoin')
+  async onMemberJoin(data: { user_id: string }) {
+    console.log(`User ${data.user_id} joined the workspace`);
+  }
+}
+```
+
+## Event Payloads
+
+### Message Events
+
+`on_message` / `messageCreate` receives a full `Message` object:
+
+```python
+@bot.event
+async def on_message(message: syncopate.Message) -> None:
+    message.id           # UUID of the message
+    message.content      # Text content
+    message.channel_id   # Channel it was sent in
+    message.channel      # Resolved Channel object
+    message.author       # User who sent it
+    message.author.bot   # True if sender is a bot
+```
+
+### Deletion Events
+
+`on_message_delete` / `messageDelete` receives only the ID:
+
+```python
+@bot.event
+async def on_message_delete(data: dict) -> None:
+    deleted_id = data["message_id"]
+```
+
+## Best Practices
+
+- **Always check `message.author.bot`** in message handlers to avoid infinite loops
+- **Keep handlers fast** — do async I/O, don't block the event loop
+- **Use commands** for structured interactions instead of parsing `on_message` manually

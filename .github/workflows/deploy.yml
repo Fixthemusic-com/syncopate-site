@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -29,6 +29,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pydoc-markdown
+        run: pip install pydoc-markdown
+
+      - name: Generate API docs
+        run: bash scripts/generate-api-docs.sh
 
       - name: Build Astro
         run: npm run build
