@@ -1,0 +1,150 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title="Blog — Syncopate" description="Updates, insights, and technical deep-dives from the Syncopate team.">
+  <section class="blog-index">
+    <div class="container">
+      <div class="blog-header">
+        <span class="section-label">Blog</span>
+        <h1>Updates & Insights</h1>
+        <p>Technical deep-dives, product updates, and behind-the-scenes from building Syncopate.</p>
+      </div>
+
+      {posts.length === 0 ? (
+        <div class="blog-empty">
+          <p>No posts yet — we're busy building. <a href="/#waitlist">Join the waitlist</a> for updates.</p>
+        </div>
+      ) : (
+        <ul class="blog-grid">
+          {posts.map((post) => (
+            <li class="blog-card">
+              <a href={`/blog/${post.id}/`}>
+                {post.data.heroImage && (
+                  <Image width={720} height={360} src={post.data.heroImage} alt="" class="blog-card-img" />
+                )}
+                <div class="blog-card-body">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {dateFormatter.format(post.data.pubDate)}
+                  </time>
+                  <h3>{post.data.title}</h3>
+                  {post.data.description && <p>{post.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+
+  .blog-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+
+  .blog-header h1 {
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-header p {
+    font-size: 1.05rem;
+  }
+
+  .blog-empty {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .blog-empty p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .blog-card a {
+    display: block;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    transition: all var(--transition-med);
+  }
+
+  .blog-card a:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .blog-card-img {
+    width: 100%;
+    aspect-ratio: 2/1;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .blog-card-body {
+    padding: 1.5rem;
+  }
+
+  .blog-card time {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-card h3 {
+    font-size: 1.15rem;
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .blog-card a:hover h3 {
+    color: var(--accent-cyan);
+  }
+
+  .blog-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} — Syncopate Blog`} description={description}>
+  <article class="blog-post">
+    {heroImage && (
+      <div class="post-hero">
+        <Image width={1020} height={510} src={heroImage} alt="" />
+      </div>
+    )}
+    <div class="prose">
+      <div class="post-meta">
+        <time datetime={pubDate.toISOString()}>
+          {dateFormatter.format(pubDate)}
+        </time>
+        {updatedDate && (
+          <span class="post-updated">
+            Updated {dateFormatter.format(updatedDate)}
+          </span>
+        )}
+      </div>
+      <h1>{title}</h1>
+      <hr />
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    padding-top: 120px;
+  }
+
+  .post-hero {
+    max-width: 1020px;
+    margin: 0 auto 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .post-hero img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .post-meta {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .post-meta time {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .post-updated {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .blog-post h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose {
+    padding: 0 1.5rem 4rem;
+  }
+</style>

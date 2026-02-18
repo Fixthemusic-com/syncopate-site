@@ -1,0 +1,259 @@
+---
+const participants = [
+  { role: 'Agency', emoji: '🏢', sees: 'Everything', can: 'All commands, financials, team management', color: 'var(--accent-cyan)' },
+  { role: 'Musician', emoji: '🎸', sees: 'Their assignments, date, venue, dress code', can: '/confirm, /decline, view logistics', color: 'var(--accent-amber)' },
+  { role: 'Client', emoji: '👰', sees: 'Booking status, team names, timeline', can: '/status, /approve, /pay', color: 'var(--accent-violet)' },
+  { role: 'Venue', emoji: '🏛️', sees: 'Date, time, load-in requirements', can: '/confirm, update logistics', color: 'var(--text-muted)' },
+];
+---
+
+<section class="section how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">How It Works</span>
+      <h2>One thread. Multiple parties. Complete visibility control.</h2>
+      <p>Here's a real scenario: a wedding band booking, from enquiry to confirmation — entirely in chat.</p>
+    </div>
+
+    <div class="how-grid animate-on-scroll">
+      <div class="how-flow">
+        <div class="flow-item">
+          <div class="flow-marker">1</div>
+          <div class="flow-content">
+            <h4>Client sends enquiry</h4>
+            <p>Natural language message in a thread linked to a new Booking transaction. AI captures date, venue, budget, and band size automatically.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-marker">2</div>
+          <div class="flow-content">
+            <h4>AI checks availability</h4>
+            <p>Queries musician schedules and presents options. Staff confirms lineup without opening a dashboard.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-marker">3</div>
+          <div class="flow-content">
+            <h4>Quote generated in-thread</h4>
+            <p>AI drafts the quote from conversation context. Staff clicks "Send to Client." No re-typing, no copy-paste.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-marker accent">4</div>
+          <div class="flow-content">
+            <h4>Client approves & pays</h4>
+            <p>Payment link delivered in the thread. Deposit triggers automatic musician notification and calendar hold.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-permissions">
+        <h3>Who sees what?</h3>
+        <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.9rem;">
+          None of these parties can see each other's pricing, personal details, or unrelated transactions.
+        </p>
+        <div class="perm-cards">
+          {participants.map((p) => (
+            <div class="perm-card">
+              <div class="perm-header">
+                <span class="perm-emoji">{p.emoji}</span>
+                <span class="perm-role" style={`color: ${p.color}`}>{p.role}</span>
+              </div>
+              <div class="perm-details">
+                <div class="perm-row">
+                  <span class="perm-label">Sees</span>
+                  <span>{p.sees}</span>
+                </div>
+                <div class="perm-row">
+                  <span class="perm-label">Can do</span>
+                  <span>{p.can}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-strip animate-on-scroll">
+      <div class="arch-layer">
+        <span class="arch-label">Your Business</span>
+        <span class="arch-desc">Vertical App: Bot · Schema · Dashboard Views · Workflows · AI Persona</span>
+      </div>
+      <div class="arch-divider">↓ runs on ↓</div>
+      <div class="arch-layer accent-layer">
+        <span class="arch-label">Syncopate Platform</span>
+        <span class="arch-desc">Chat · Permissions · Transactions · AI · Bot SDK</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-section {
+    background: var(--surface-1);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .how-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-left: 2px solid var(--border-subtle);
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .flow-item:last-child {
+    border-left-color: var(--accent-cyan);
+  }
+
+  .flow-marker {
+    position: absolute;
+    left: -14px;
+    top: 1.5rem;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    border: 2px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .flow-marker.accent {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+  }
+
+  .flow-content h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .flow-content p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .how-permissions h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .perm-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .perm-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    transition: border-color var(--transition-fast);
+  }
+
+  .perm-card:hover {
+    border-color: var(--border-accent);
+  }
+
+  .perm-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .perm-emoji {
+    font-size: 1.2rem;
+  }
+
+  .perm-role {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .perm-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .perm-row {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .perm-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .arch-strip {
+    text-align: center;
+  }
+
+  .arch-layer {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .accent-layer {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  .arch-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .arch-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .arch-divider {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.75rem 0;
+  }
+
+  @media (max-width: 960px) {
+    .how-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

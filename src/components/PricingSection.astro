@@ -1,0 +1,252 @@
+---
+const tiers = [
+  {
+    name: 'Starter',
+    price: 'Free',
+    note: 'Limited transactions/month',
+    features: ['5 team members', '50 transactions/mo', 'Basic AI agent', 'Community support'],
+    highlight: false,
+  },
+  {
+    name: 'Pro',
+    price: '$30',
+    note: 'per org / month',
+    features: ['Unlimited team', 'Unlimited transactions', 'Full AI agent', 'Vertical App marketplace', 'Priority support'],
+    highlight: true,
+  },
+  {
+    name: 'Business',
+    price: '$75',
+    note: 'per org / month',
+    features: ['Everything in Pro', 'Custom AI persona', 'Advanced analytics', 'API access', 'Dedicated support', 'SSO & audit logs'],
+    highlight: false,
+  },
+];
+---
+
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">Pricing</span>
+      <h2>Your clients and suppliers<br /><span class="text-gradient">don't cost you money.</span></h2>
+      <p>Per-organization pricing. External users are always free. No per-seat tax on collaboration.</p>
+    </div>
+
+    <div class="pricing-compare animate-on-scroll">
+      <div class="compare-card bad">
+        <span class="compare-label">Slack (50 external users)</span>
+        <span class="compare-price">$4,350<small>/year</small></span>
+        <span class="compare-note">$7.25/user/month × 50</span>
+      </div>
+      <div class="compare-vs">vs</div>
+      <div class="compare-card good">
+        <span class="compare-label">Syncopate (50 external users)</span>
+        <span class="compare-price">$360<small>/year</small></span>
+        <span class="compare-note">$30/org/month. Externals free.</span>
+      </div>
+    </div>
+
+    <div class="pricing-grid animate-on-scroll">
+      {tiers.map((tier) => (
+        <div class={`pricing-card ${tier.highlight ? 'pricing-featured' : ''}`}>
+          {tier.highlight && <span class="pricing-badge">Most Popular</span>}
+          <h3>{tier.name}</h3>
+          <div class="pricing-amount">
+            <span class="pricing-price">{tier.price}</span>
+            {tier.note && <span class="pricing-note">{tier.note}</span>}
+          </div>
+          <ul class="pricing-features">
+            {tier.features.map((f) => (
+              <li>
+                <span class="check">✓</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#waitlist" class={`btn ${tier.highlight ? 'btn-primary' : 'btn-ghost'}`} style="width: 100%; justify-content: center;">
+            {tier.price === 'Free' ? 'Get Started' : 'Join Waitlist'}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="pricing-disclaimer animate-on-scroll">
+      🚧 Pricing is indicative — we're in early development. <a href="#waitlist">Join the waitlist</a> to shape it.
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    background: var(--surface-0);
+  }
+
+  .pricing-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+  }
+
+  .compare-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    min-width: 260px;
+  }
+
+  .compare-card.bad {
+    border-color: rgba(255, 95, 87, 0.2);
+  }
+
+  .compare-card.good {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  .compare-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .compare-price {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+  }
+
+  .compare-price small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .bad .compare-price { color: #ff5f57; }
+  .good .compare-price { color: var(--accent-cyan); }
+
+  .compare-note {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+  }
+
+  .compare-vs {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .pricing-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all var(--transition-med);
+  }
+
+  .pricing-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-4px);
+  }
+
+  .pricing-featured {
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 40px rgba(255, 179, 0, 0.1);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-amber);
+    color: var(--surface-0);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-amount {
+    margin-bottom: 2rem;
+  }
+
+  .pricing-price {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+  }
+
+  .pricing-note {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+  }
+
+  .pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pricing-features li:last-child { border-bottom: none; }
+
+  .check {
+    color: var(--accent-cyan);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .pricing-disclaimer {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .compare-card { min-width: 200px; }
+  }
+</style>

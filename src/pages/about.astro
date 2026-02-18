@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Manifesto — Syncopate" description="The principles behind Syncopate: why the conversation should be the interface, and dashboards should be the fallback.">
+  <section class="section manifesto-hero">
+    <div class="container">
+      <div class="manifesto-header">
+        <span class="section-label">Our Manifesto</span>
+        <h1>"The conversation<br />is the interface."</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="section manifesto-content">
+    <div class="container">
+      <div class="prose">
+        <h2>The Problem</h2>
+        <p>
+          Every business operates through conversations — email threads, WhatsApp messages, Slack channels, phone calls.
+          Yet the systems that track those interactions live in a separate, opaque dashboard.
+        </p>
+        <p>The result is a cycle everyone knows:</p>
+        <ol>
+          <li><strong>Negotiate over chat</strong> — terms, dates, prices, requirements</li>
+          <li><strong>Open the dashboard</strong> — a separate app that knows nothing about what you just agreed</li>
+          <li><strong>Re-type everything</strong> — manually copying details you've already written</li>
+          <li><strong>Switch back to chat</strong> — to relay the update, coordinate, get confirmation</li>
+          <li><strong>Hope nothing was lost</strong> — because the conversation and the record are in two different places</li>
+          <li><strong>Repeat forever</strong></li>
+        </ol>
+        <p>
+          Your conversations already contain the data. Your dashboard just can't read them.
+          <strong>This is broken.</strong>
+        </p>
+
+        <hr />
+
+        <h2>Our Bet</h2>
+        <p>
+          The next wave of business software doesn't ask you to switch between chat and dashboards.
+          It makes <strong>the conversation the system of record</strong>.
+        </p>
+        <p>
+          With the recent advances in AI, natural language is now a reliable interface for structured
+          business operations. Users can interact with AI agents through chat to perform actions, query
+          data, and coordinate with other parties — and the dashboard becomes a fallback for complex
+          visual tasks, not the primary interface.
+        </p>
+
+        <hr />
+
+        <h2>Principles</h2>
+
+        <h3>1. Conversations Are the Interface</h3>
+        <p>
+          The primary way users interact with Syncopate is through chat — slash commands, AI agents,
+          and structured messages within threads. Every action taken in a thread is automatically
+          recorded against the Transaction it's linked to. The conversation <em>is</em> the audit trail.
+        </p>
+
+        <h3>2. Transactions Are First-Class Citizens</h3>
+        <p>
+          Every channel or thread in Syncopate is linked to a <strong>Transaction</strong> — a booking,
+          order, ticket, enquiry, support case. Actions, messages, file uploads, status changes — all are
+          automatically associated. There is no manual linking, no separate data entry, no "update the CRM."
+        </p>
+
+        <h3>3. Trust Is Granular, Not Binary</h3>
+        <p>
+          Existing platforms assume a binary trust model: you're either "inside" or "outside." Real
+          business is messier. Syncopate enables <strong>as-trustless-as-possible</strong> access between
+          parties: staff, clients, and suppliers coexist in one workspace with scoped visibility.
+        </p>
+
+        <h3>4. AI Agents Are Colleagues, Not Features</h3>
+        <p>
+          The AI agent is a participant in the conversation — it has full context of the Transaction,
+          can propose actions, draft responses, extract structured data, and execute operations after
+          human confirmation. This is inherently <strong>human-in-the-loop</strong>.
+        </p>
+
+        <h3>5. The Platform Is Market-Agnostic</h3>
+        <p>
+          Syncopate doesn't prescribe what your Transactions look like. The platform provides chat,
+          permissions, transactions, and AI. <strong>Vertical Apps</strong> specialize it for each
+          market — with bots, schemas, dashboard views, and workflows tailored to the domain.
+        </p>
+
+        <hr />
+
+        <h2>What We're NOT Building</h2>
+        <ul>
+          <li><strong>Another Slack/Discord</strong> — We're not optimizing for internal team chat</li>
+          <li><strong>Another CRM dashboard</strong> — We're replacing dashboards as the primary interface</li>
+          <li><strong>A walled garden</strong> — Your data is exportable, always</li>
+          <li><strong>Vaporware AI</strong> — Real operational agents, not marketing demos</li>
+        </ul>
+
+        <hr />
+
+        <h2>Our Commitments</h2>
+        <ol>
+          <li><strong>Chat-first, dashboard-fallback</strong> — The conversation is always the primary interface</li>
+          <li><strong>Transaction-native</strong> — Every thread is linked to a business entity, always</li>
+          <li><strong>Granular trust</strong> — Mixed-trust environments are the default</li>
+          <li><strong>AI that does real work</strong> — Agents that operate within business context</li>
+          <li><strong>Your data, exportable</strong> — Full export anytime, standard formats</li>
+        </ol>
+
+        <div class="manifesto-cta">
+          <p><em>Syncopate: Stop being the human router between your chat and your dashboard.</em></p>
+          <a href="/#waitlist" class="btn btn-primary" style="margin-top: 1rem;">Join the Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .manifesto-hero {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    background: var(--gradient-glow);
+  }
+
+  .manifesto-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .manifesto-content {
+    padding-top: 40px;
+  }
+
+  .manifesto-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .manifesto-cta p {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+  }
+</style>

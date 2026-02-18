@@ -1,0 +1,139 @@
+---
+---
+
+<section class="section cta-section" id="waitlist">
+  <div class="cta-bg">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+  </div>
+  <div class="container cta-content">
+    <div class="animate-on-scroll">
+      <span class="section-label" style="color: rgba(255,255,255,0.7);">Early Access</span>
+      <h2>Make the conversation<br />productive enough that you<br />barely need the spreadsheet.</h2>
+      <p class="cta-sub">
+        Join the waitlist. Be the first to run your business through chat.
+      </p>
+      <form class="cta-form" action="#" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="you@yourcompany.com"
+          required
+          aria-label="Email address"
+          class="cta-input"
+        />
+        <button type="submit" class="btn btn-primary cta-submit">
+          Get Early Access
+        </button>
+      </form>
+      <p class="cta-fine">
+        No spam. We'll email you when it's ready.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: var(--gradient-cta);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+  }
+
+  .cta-orb-1 {
+    width: 500px; height: 500px;
+    background: rgba(255, 179, 0, 0.15);
+    top: -200px; right: -100px;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .cta-orb-2 {
+    width: 400px; height: 400px;
+    background: rgba(0, 229, 255, 0.1);
+    bottom: -150px; left: -100px;
+    animation: float 12s ease-in-out infinite reverse;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-section h2 {
+    color: #fff;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+  }
+
+  .cta-sub {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 480px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .cta-input {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    outline: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .cta-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .cta-input:focus {
+    border-color: var(--accent-amber);
+  }
+
+  .cta-submit {
+    flex-shrink: 0;
+  }
+
+  .cta-fine {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+  }
+
+  @media (max-width: 580px) {
+    .cta-form {
+      flex-direction: column;
+    }
+
+    .cta-submit {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

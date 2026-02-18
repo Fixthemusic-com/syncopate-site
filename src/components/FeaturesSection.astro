@@ -1,0 +1,132 @@
+---
+const features = [
+  {
+    icon: '🔗',
+    title: 'Transaction-First',
+    description: 'Every thread is linked to a booking, order, or ticket. Messages, files, and actions auto-record on the transaction timeline.',
+    accent: 'cyan',
+  },
+  {
+    icon: '🛡️',
+    title: 'Granular Permissions',
+    description: 'Staff, clients, and suppliers coexist in one workspace. Each sees only what they should — scoped profiles, restricted commands.',
+    accent: 'amber',
+  },
+  {
+    icon: '🤖',
+    title: 'AI-Native Operations',
+    description: 'AI agents with full transaction context. Query data, draft responses, extract terms, and execute actions — all in the conversation.',
+    accent: 'violet',
+  },
+  {
+    icon: '⚡',
+    title: 'Slash Commands',
+    description: 'Permission-scoped commands for your domain. /status, /invoice, /confirm — your team uses chat, not dashboard forms.',
+    accent: 'cyan',
+  },
+  {
+    icon: '🧩',
+    title: 'Vertical Apps',
+    description: 'One platform, any market. Bot + schema + views + workflows tailored to your industry. Band bookings, travel, logistics, staffing.',
+    accent: 'amber',
+  },
+  {
+    icon: '📊',
+    title: 'Dashboard-Fallback',
+    description: 'Calendars, kanban, charts, and tables remain for bulk review and analytics. But day-to-day ops happen in chat.',
+    accent: 'violet',
+  },
+];
+
+const accentColors: Record<string, string> = {
+  cyan: 'var(--accent-cyan)',
+  amber: 'var(--accent-amber)',
+  violet: 'var(--accent-violet)',
+};
+---
+
+<section class="section features-section" id="features">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">Platform Features</span>
+      <h2>Everything a business chat should be. Nothing a CRM dashboard is.</h2>
+      <p>Built from scratch for multi-party collaboration around transactions — not retrofitted team chat.</p>
+    </div>
+
+    <div class="features-grid">
+      {features.map((f, i) => (
+        <div class="feature-card card animate-on-scroll" style={`--card-delay: ${i * 0.08}s; --card-accent: ${accentColors[f.accent]}`}>
+          <div class="feature-icon">{f.icon}</div>
+          <h3>{f.title}</h3>
+          <p>{f.description}</p>
+          <div class="feature-glow"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    background: var(--surface-0);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    position: relative;
+    overflow: hidden;
+    transition-delay: var(--card-delay, 0s);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .feature-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--card-accent, var(--accent-cyan));
+    opacity: 0;
+    filter: blur(60px);
+    transition: opacity var(--transition-med);
+    pointer-events: none;
+  }
+
+  .feature-card:hover .feature-glow {
+    opacity: 0.08;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 960px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
