@@ -1,6 +1,6 @@
 export const SITE_TITLE = 'Syncopate';
-export const SITE_DESCRIPTION = 'The chat-first platform where business happens. Rich messaging, granular permissions, transaction-first architecture, and AI-native operations.';
-export const SITE_TAGLINE = 'The chat-first platform where business happens.';
+export const SITE_DESCRIPTION = 'Provision smart, programmable Spaces for every client interaction. Bots that know your business, commands that get things done, and conversations your clients actually want to come back to.';
+export const SITE_TAGLINE = 'Empower every user with a Space to engage with tools, agents, and each other.';
 
 export const NAV_LINKS = [
   { label: 'Features', href: '/#features' },

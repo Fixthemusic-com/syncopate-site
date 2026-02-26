@@ -1,9 +1,9 @@
 ---
 const participants = [
-  { role: 'Agency', emoji: '🏢', sees: 'Everything', can: 'All commands, financials, team management', color: 'var(--accent-cyan)' },
-  { role: 'Musician', emoji: '🎸', sees: 'Their assignments, date, venue, dress code', can: '/confirm, /decline, view logistics', color: 'var(--accent-amber)' },
-  { role: 'Client', emoji: '👰', sees: 'Booking status, team names, timeline', can: '/status, /approve, /pay', color: 'var(--accent-violet)' },
-  { role: 'Venue', emoji: '🏛️', sees: 'Date, time, load-in requirements', can: '/confirm, update logistics', color: 'var(--text-muted)' },
+  { role: 'Hub Owner', emoji: '🏢', sees: 'Everything — all Spaces, all clients, financials', can: 'All commands, team management, billing', color: 'var(--accent-cyan)' },
+  { role: 'Client', emoji: '👤', sees: 'Their Space, their history, their status', can: '/status, /pay, ask the bot questions', color: 'var(--accent-amber)' },
+  { role: 'Service Provider', emoji: '🔧', sees: 'Assigned tasks, schedule, logistics', can: '/confirm, /decline, update progress', color: 'var(--accent-violet)' },
+  { role: 'Bot', emoji: '⚡', sees: 'Full transaction context within the Space', can: 'Answer questions, run lookups, trigger actions', color: 'var(--text-muted)' },
 ];
 ---
 
@@ -11,8 +11,8 @@ const participants = [
   <div class="container">
     <div class="section-header animate-on-scroll">
       <span class="section-label">How It Works</span>
-      <h2>One thread. Multiple parties. Complete visibility control.</h2>
-      <p>Here's a real scenario: a wedding band booking, from enquiry to confirmation — entirely in chat.</p>
+      <h2>Open a Space. Let the conversation do the work.</h2>
+      <p>Here's what it looks like: a client engagement from first message to done — entirely inside a Space.</p>
     </div>
 
     <div class="how-grid animate-on-scroll">
@@ -20,29 +20,29 @@ const participants = [
         <div class="flow-item">
           <div class="flow-marker">1</div>
           <div class="flow-content">
-            <h4>Client sends enquiry</h4>
-            <p>Natural language message in a thread linked to a new Booking transaction. AI captures date, venue, budget, and band size automatically.</p>
+            <h4>Open a Space for your client</h4>
+            <p>One command and your client has a dedicated, smart conversation with your business. No sign-up forms, no portal logins.</p>
           </div>
         </div>
         <div class="flow-item">
           <div class="flow-marker">2</div>
           <div class="flow-content">
-            <h4>AI checks availability</h4>
-            <p>Queries musician schedules and presents options. Staff confirms lineup without opening a dashboard.</p>
+            <h4>They ask a question — the bot answers</h4>
+            <p>Your bot knows your business. It checks availability, looks up orders, surfaces relevant info — instantly, without waiting for your team.</p>
           </div>
         </div>
         <div class="flow-item">
           <div class="flow-marker">3</div>
           <div class="flow-content">
-            <h4>Quote generated in-thread</h4>
-            <p>AI drafts the quote from conversation context. Staff clicks "Send to Client." No re-typing, no copy-paste.</p>
+            <h4>Your team steps in when it matters</h4>
+            <p>Bots handle the routine. Your people focus on the conversations that need a human touch.</p>
           </div>
         </div>
         <div class="flow-item">
           <div class="flow-marker accent">4</div>
           <div class="flow-content">
-            <h4>Client approves & pays</h4>
-            <p>Payment link delivered in the thread. Deposit triggers automatic musician notification and calendar hold.</p>
+            <h4>Commands close the loop</h4>
+            <p>/invoice sends the bill. /confirm locks in the booking. Everything happens in the conversation — no tab-switching, no re-typing.</p>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ const participants = [
       <div class="how-permissions">
         <h3>Who sees what?</h3>
         <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 0.9rem;">
-          None of these parties can see each other's pricing, personal details, or unrelated transactions.
+          Every participant only sees what's relevant to them. No leaking pricing, personal details, or unrelated conversations.
         </p>
         <div class="perm-cards">
           {participants.map((p) => (
@@ -72,21 +72,18 @@ const participants = [
             </div>
           ))}
         </div>
-        <p class="text-muted" style="margin-top: 1rem; font-size: 0.85rem;">
-          <strong class="text-cyan">Own your users:</strong> Unlike Discord or Telegram, people on Syncopate only receive messages from workspaces they've joined. Your team and your clients are protected from scammers, spam, and unsolicited contacts — by design.
-        </p>
       </div>
     </div>
 
     <div class="arch-strip animate-on-scroll">
       <div class="arch-layer">
-        <span class="arch-label">Your Business</span>
-        <span class="arch-desc">Vertical App: Bot · Schema · Dashboard Views · Workflows · AI Persona</span>
+        <span class="arch-label">Your Hub</span>
+        <span class="arch-desc">Bot · Commands · Permissions · Workflows · AI Persona</span>
       </div>
       <div class="arch-divider">↓ runs on ↓</div>
       <div class="arch-layer accent-layer">
         <span class="arch-label">Syncopate Platform</span>
-        <span class="arch-desc">Chat · Permissions · Transactions · AI · Bot SDK</span>
+        <span class="arch-desc">Smart Spaces · Messaging · Transactions · Bot SDK</span>
       </div>
     </div>
   </div>

@@ -2,12 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Manifesto — Syncopate" description="The principles behind Syncopate: why the conversation should be the interface, and dashboards should be the fallback.">
+<BaseLayout title="Manifesto — Syncopate" description="Why we built Syncopate: smart, programmable Spaces where conversations do the work.">
   <section class="section manifesto-hero">
     <div class="container">
       <div class="manifesto-header">
         <span class="section-label">Our Manifesto</span>
-        <h1>"The conversation<br />is the interface."</h1>
+        <h1>"Power to<br />the users."</h1>
       </div>
     </div>
   </section>
@@ -17,35 +17,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="prose">
         <h2>The Problem</h2>
         <p>
-          Every business operates through conversations — email threads, WhatsApp messages, Slack channels, phone calls.
-          Yet the systems that track those interactions live in a separate, opaque dashboard.
+          Every business runs on conversations — questions, confirmations, updates, negotiations.
+          But the tools that track those conversations live somewhere else entirely.
         </p>
-        <p>The result is a cycle everyone knows:</p>
+        <p>The result is a loop everyone recognises:</p>
         <ol>
-          <li><strong>Negotiate over chat</strong> — terms, dates, prices, requirements</li>
-          <li><strong>Open the dashboard</strong> — a separate app that knows nothing about what you just agreed</li>
-          <li><strong>Re-type everything</strong> — manually copying details you've already written</li>
-          <li><strong>Switch back to chat</strong> — to relay the update, coordinate, get confirmation</li>
-          <li><strong>Hope nothing was lost</strong> — because the conversation and the record are in two different places</li>
+          <li><strong>Talk to your client</strong> — over WhatsApp, email, wherever</li>
+          <li><strong>Open the dashboard</strong> — which knows nothing about what you just discussed</li>
+          <li><strong>Re-type everything</strong> — into forms that nobody enjoys filling out</li>
+          <li><strong>Switch back to chat</strong> — to relay the update and get confirmation</li>
+          <li><strong>Hope nothing was lost</strong> — because the conversation and the record live in two different places</li>
           <li><strong>Repeat forever</strong></li>
         </ol>
         <p>
-          Your conversations already contain the data. Your dashboard just can't read them.
-          <strong>This is broken.</strong>
+          The conversation already contains everything.
+          <strong>Why are we still copying it into dashboards?</strong>
         </p>
 
         <hr />
 
         <h2>Our Bet</h2>
         <p>
-          The next wave of business software doesn't ask you to switch between chat and dashboards.
-          It makes <strong>the conversation the system of record</strong>.
+          The next wave of business tools doesn't ask you to switch between chat and dashboards.
+          It makes <strong>the conversation itself smart enough to do the work</strong>.
         </p>
         <p>
-          With the recent advances in AI, natural language is now a reliable interface for structured
-          business operations. Users can interact with AI agents through chat to perform actions, query
-          data, and coordinate with other parties — and the dashboard becomes a fallback for complex
-          visual tasks, not the primary interface.
+          AI has made natural language a reliable interface for structured operations. People can
+          talk to bots, run commands, and get things done — all inside a conversation. The dashboard
+          becomes the fallback for big-picture views, not the thing you live in all day.
         </p>
 
         <hr />
@@ -54,74 +53,70 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <h3>1. Conversations Are the Interface</h3>
         <p>
-          The primary way users interact with Syncopate is through chat — slash commands, AI agents,
-          and structured messages within threads. Every action taken in a thread is automatically
-          recorded against the Transaction it's linked to. The conversation <em>is</em> the audit trail.
+          The primary way people interact with Syncopate is by talking — to bots, to your team,
+          through slash commands. Every action inside a Space is automatically recorded. The conversation
+          <em>is</em> the audit trail.
         </p>
 
-        <h3>2. Transactions Are First-Class Citizens</h3>
+        <h3>2. Spaces Are Smart and Programmable</h3>
         <p>
-          Every channel or thread in Syncopate is linked to a <strong>Transaction</strong> — a booking,
-          order, ticket, enquiry, support case. Actions, messages, file uploads, status changes — all are
-          automatically associated. There is no manual linking, no separate data entry, no "update the CRM."
+          Every Space is backed by bots that understand your business context. They answer questions,
+          look things up, and execute tasks. Slash commands let anyone — staff or client — get things
+          done without ever touching a form.
         </p>
 
         <h3>3. Trust Is Granular, Not Binary</h3>
         <p>
-          Existing platforms assume a binary trust model: you're either "inside" or "outside." Real
-          business is messier. Syncopate enables <strong>as-trustless-as-possible</strong> access between
-          parties: staff, clients, and suppliers coexist in one workspace with scoped visibility.
+          Real business isn't "inside or outside." Staff, clients, and service providers coexist in
+          the same Space with scoped visibility. Everyone sees only what they should.
         </p>
 
-        <h3>4. AI Agents Are Colleagues, Not Features</h3>
+        <h3>4. Bots Are Participants, Not Features</h3>
         <p>
-          The AI agent is a participant in the conversation — it has full context of the Transaction,
-          can propose actions, draft responses, extract structured data, and execute operations after
-          human confirmation. This is inherently <strong>human-in-the-loop</strong>.
+          The bot is a participant in the conversation — it has full context of the Space, can
+          answer questions, draft responses, and execute actions after human confirmation. This
+          is <strong>human-in-the-loop</strong> by design.
         </p>
 
-        <h3>5. The Platform Is Market-Agnostic</h3>
+        <h3>5. Hubs Are Market-Agnostic</h3>
         <p>
-          Syncopate doesn't prescribe what your Transactions look like. The platform provides chat,
-          permissions, transactions, and AI. <strong>Vertical Apps</strong> specialize it for each
-          market — with bots, schemas, dashboard views, and workflows tailored to the domain.
+          Syncopate doesn't prescribe what your business looks like. The platform provides Spaces,
+          messaging, permissions, and AI. Your <strong>Hub</strong> configures it for your domain —
+          with bots, commands, and workflows tailored to how you actually work.
         </p>
 
-        <h3>6. You Own Your Users</h3>
+        <h3>6. Your Users Are Yours</h3>
         <p>
-          On other platforms, the users you invite belong to that platform — anyone can DM them,
-          scammers can target them, and you have zero control over their interaction surface.
-          People are genuinely scared to join platforms like Telegram and Discord for this reason.
-          On Syncopate, users only receive messages from workspaces they've explicitly joined.
-          Workspace owners control the entire communication boundary — protecting both their team
-          and their clients from spam, scams, and unsolicited contact.
+          On other platforms, the people you invite belong to that platform — anyone can message them,
+          scammers can target them. On Syncopate, users only hear from Hubs they've joined.
+          You control the entire communication boundary.
         </p>
 
         <hr />
 
         <h2>What We're NOT Building</h2>
         <ul>
-          <li><strong>Another Slack/Discord</strong> — We're not optimizing for internal team chat</li>
-          <li><strong>Another CRM dashboard</strong> — We're replacing dashboards as the primary interface</li>
-          <li><strong>A platform that owns your users</strong> — Users belong to your workspace. Your team and clients only hear from people you authorize — no scammers, no strangers.</li>
+          <li><strong>Another Slack or Discord</strong> — We're not building internal team chat</li>
+          <li><strong>Another dashboard</strong> — We're replacing dashboards as the primary interface</li>
+          <li><strong>A platform that owns your users</strong> — Your clients belong to your Hub, not us</li>
           <li><strong>A walled garden</strong> — Your data is exportable, always</li>
-          <li><strong>Vaporware AI</strong> — Real operational agents, not marketing demos</li>
+          <li><strong>A chatbot that sounds smart but does nothing</strong> — Real bots that do real work</li>
         </ul>
 
         <hr />
 
         <h2>Our Commitments</h2>
         <ol>
-          <li><strong>Chat-first, dashboard-fallback</strong> — The conversation is always the primary interface</li>
-          <li><strong>Transaction-native</strong> — Every thread is linked to a business entity, always</li>
+          <li><strong>Conversation-first, dashboard-fallback</strong> — The Space is always the primary interface</li>
+          <li><strong>Smart by default</strong> — Every Space comes with bots that understand context</li>
+          <li><strong>Programmable</strong> — Slash commands and the Bot SDK let you customise everything</li>
           <li><strong>Granular trust</strong> — Mixed-trust environments are the default</li>
-          <li><strong>AI that does real work</strong> — Agents that operate within business context</li>
           <li><strong>Your data, exportable</strong> — Full export anytime, standard formats</li>
-          <li><strong>Your users, your rules</strong> — Users only receive messages from workspaces they've joined. No spam, no platform-level contact.</li>
+          <li><strong>Your users, your rules</strong> — No spam, no platform-level contact</li>
         </ol>
 
         <div class="manifesto-cta">
-          <p><em>Syncopate: Stop being the human router between your chat and your dashboard.</em></p>
+          <p><em>Syncopate: Give your clients a conversation worth coming back to.</em></p>
           <a href="/#waitlist" class="btn btn-primary" style="margin-top: 1rem;">Join the Waitlist</a>
         </div>
       </div>

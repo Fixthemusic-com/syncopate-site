@@ -1,5 +1,5 @@
 ---
-import { FOOTER_LINKS } from '../consts';
+import { FOOTER_LINKS, SITE_TAGLINE } from '../consts';
 ---
 
 <footer class="site-footer">
@@ -7,11 +7,11 @@ import { FOOTER_LINKS } from '../consts';
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="Syncopate Home">
-          <span class="logo-icon">⚡</span>
-          <span class="logo-text">syncopate</span>
+          <img src="/logo-round.svg" alt="Syncopate" width="30" height="30" style="border-radius: 50%;" />
+          <span class="logo-text">Syncopate</span>
         </a>
         <p class="footer-tagline">
-          The chat-first platform where business happens.
+          {SITE_TAGLINE}
         </p>
         <div class="footer-social">
           <a href="https://github.com" aria-label="GitHub" class="social-link">
@@ -47,7 +47,7 @@ import { FOOTER_LINKS } from '../consts';
 
     <div class="footer-bottom">
       <p>&copy; {new Date().getFullYear()} Syncopate. All rights reserved.</p>
-      <p class="footer-quote">Stop being the human router between your chat and your dashboard.</p>
+      <p class="footer-quote">Give your clients a conversation worth coming back to.</p>
     </div>
   </div>
 </footer>
@@ -78,7 +78,6 @@ import { FOOTER_LINKS } from '../consts';
     margin-bottom: 1rem;
   }
 
-  .footer-logo .logo-icon { font-size: 1.3rem; }
   .footer-logo .logo-text { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; }
 
   .footer-tagline {
@@ -99,7 +98,7 @@ import { FOOTER_LINKS } from '../consts';
   }
 
   .social-link:hover {
-    color: var(--accent-cyan);
+    color: var(--accent-blue);
   }
 
   .footer-col h4 {

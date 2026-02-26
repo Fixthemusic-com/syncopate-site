@@ -3,11 +3,11 @@ const tiers = [
   {
     name: 'Free',
     price: 'Free',
-    note: 'For small teams getting started',
+    note: 'For freelancers getting started',
     features: [
+      'Up to 5 active Spaces',
       'Unlimited team members',
-      'Channels up to 5 people',
-      'Broadcast-only for larger channels',
+      '1 bot per Hub',
       '10 MB file uploads',
       'Message history — forever',
       'API access (rate-limited)',
@@ -18,14 +18,14 @@ const tiers = [
   {
     name: 'Pro',
     price: '$30',
-    note: 'per org / month',
+    note: 'per Hub / month',
     features: [
+      'Up to 100 active Spaces',
       'Unlimited team members',
-      'Channels up to 100 people',
+      'Unlimited bots',
       '50 MB file uploads',
       'Message history — forever',
       'Full API access',
-      'Vertical App marketplace',
       'Priority support',
     ],
     highlight: true,
@@ -33,13 +33,13 @@ const tiers = [
   {
     name: 'Business',
     price: '$75',
-    note: 'per org / month',
+    note: 'per Hub / month',
     features: [
+      'Unlimited Spaces',
       'Everything in Pro',
-      'Unlimited channel size',
+      'Custom bot personas',
       '500 MB file uploads',
       'Advanced analytics',
-      'Full API access',
       'Dedicated support',
       'SSO & audit logs',
     ],
@@ -52,8 +52,8 @@ const tiers = [
   <div class="container">
     <div class="section-header animate-on-scroll">
       <span class="section-label">Pricing</span>
-      <h2>Your clients and suppliers<br /><span class="text-gradient">don't cost you money.</span></h2>
-      <p>Per-organization pricing. External users are always free. No per-seat tax on collaboration.</p>
+      <h2>Your clients<br /><span class="text-gradient">don't cost you money.</span></h2>
+      <p>Per-Hub pricing. Every client who joins a Space is free. No per-seat tax on the people you're trying to serve.</p>
     </div>
 
     <div class="pricing-compare animate-on-scroll">
@@ -64,9 +64,9 @@ const tiers = [
       </div>
       <div class="compare-vs">vs</div>
       <div class="compare-card good">
-        <span class="compare-label">Syncopate (50 external users)</span>
+        <span class="compare-label">Syncopate (50 client Spaces)</span>
         <span class="compare-price">$360<small>/year</small></span>
-        <span class="compare-note">$30/org/month. Externals free.</span>
+        <span class="compare-note">$30/Hub/month. Clients free.</span>
       </div>
     </div>
 

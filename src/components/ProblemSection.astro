@@ -1,7 +1,7 @@
 ---
 const steps = [
-  { emoji: '💬', text: 'Negotiate over chat — terms, dates, prices' },
-  { emoji: '🖥️', text: 'Open the dashboard — a separate app that knows nothing' },
+  { emoji: '💬', text: 'Client messages you on WhatsApp with a question' },
+  { emoji: '🖥️', text: 'You open the dashboard — it knows nothing about the conversation' },
   { emoji: '⌨️', text: 'Re-type everything you already discussed' },
   { emoji: '🔄', text: 'Switch back to chat to relay the update' },
   { emoji: '🤞', text: 'Hope nothing was lost in translation' },
@@ -9,10 +9,10 @@ const steps = [
 ];
 
 const platforms = [
-  { name: 'Slack', issue: 'Per-seat pricing makes external users prohibitive. Internal trust model.' },
-  { name: 'Discord', issue: 'Users belong to Discord, not you. Anyone can DM your members and clients — scammers included. No business identity, no user isolation.' },
-  { name: 'WhatsApp', issue: 'Users belong to Meta, not you. No roles, no bots, no structured data — and you can\'t stop strangers from contacting your people.' },
-  { name: 'Dashboards', issue: 'Opaque, disconnected from the conversations where decisions happen.' },
+  { name: 'Client Portals', issue: 'You built one. Nobody logs in. The real conversation still happens over email and chat.' },
+  { name: 'WhatsApp / Telegram', issue: 'No bots, no commands, no structure. You can\'t program a conversation or stop strangers from messaging your people.' },
+  { name: 'Slack', issue: 'Built for internal teams. Every external user costs you per-seat. Not designed for client engagement.' },
+  { name: 'Email', issue: 'Threads get buried. Attachments get lost. Nothing is structured or actionable.' },
 ];
 ---
 
@@ -20,8 +20,8 @@ const platforms = [
   <div class="container">
     <div class="section-header animate-on-scroll">
       <span class="section-label">The Problem</span>
-      <h2>Your conversations already contain the data. Your dashboard just can't read them.</h2>
-      <p>Every business runs on chat. But the systems that track work live in a separate dashboard, disconnected from context.</p>
+      <h2>The conversation is where the work happens. Your tools just pretend it doesn't.</h2>
+      <p>You already talk to your clients every day. But the tools that track work live somewhere else — disconnected from the conversation where decisions are actually made.</p>
     </div>
 
     <div class="broken-flow animate-on-scroll">
@@ -45,11 +45,11 @@ const platforms = [
 
     <div class="problem-insight animate-on-scroll">
       <div class="insight-card">
-        <h3>The gap no one fills</h3>
+        <h3>The conversation is where your clients already are</h3>
         <p>
-          No existing platform sits at the intersection of <strong class="text-cyan">rich messaging</strong>,
-          <strong class="text-amber">granular permissions</strong>, <strong>transaction-first architecture</strong>,
-          <strong class="text-cyan">AI-native operations</strong>, and <strong class="text-amber">true user ownership</strong>.
+          It just needs to be <strong class="text-cyan">smart enough</strong> to answer their questions,
+          <strong class="text-amber">programmable enough</strong> to get things done,
+          and <strong>yours</strong> — not some platform's.
         </p>
       </div>
     </div>
